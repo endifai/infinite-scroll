@@ -1,26 +1,17 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { ReactElement } from 'react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import { DataTable } from './components/data-table'
+import { Settings } from './components/settings'
+import { DataProvider } from './context/data-provider'
+import { SettingsProvider } from './context/settings-context'
 
-export default App;
+export const App = (): ReactElement => (
+  <SettingsProvider>
+    <DataProvider>
+      <div className="App">
+        <Settings />
+        <DataTable />
+      </div>
+    </DataProvider>
+  </SettingsProvider>
+)
