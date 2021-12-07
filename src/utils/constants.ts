@@ -1,3 +1,7 @@
 export const MAX_GENERATION_ITEMS_COUNT = 30
 
 export const MAX_ITEMS_RENDERED_PER_TIME = 10
+
+export const MAX_ITEMS_IN_MEMORY_COUNT = 30
+
+export const DATASET_KEY = '@DATA_SET'

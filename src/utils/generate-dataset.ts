@@ -1,22 +1,24 @@
-import { DataItem } from '../context/data-provider'
+import { DataItem, DataSet } from '../context/data-provider'
 
 /**
  * generates dataset with random data
  * @param rows - length of dataset
  * @param columns - count of columns in data item (keys will look like A, B, C and etc)
+ * @param startIndex
  */
 export const generateDataset = (
   rows: number,
   columns: number,
-): Promise<DataItem[]> => {
-  return new Promise((resolve) => {
+  startIndex: number,
+): Promise<DataSet> =>
+  new Promise((resolve) => {
     if (columns === 0 || rows === 0) {
-      resolve([])
+      resolve({})
     }
 
-    const data = []
+    const data: DataSet = {}
 
-    for (let i = 0; i < rows; i++) {
+    for (let i = startIndex; i < rows + startIndex; i++) {
       const item: DataItem = {}
 
       for (let j = 0; j < columns; j++) {
@@ -26,9 +28,8 @@ export const generateDataset = (
         item[char] = Math.round(Math.random() * 1000)
       }
 
-      data.push(item)
+      data[i] = item
     }
 
     resolve(data)
   })
-}
